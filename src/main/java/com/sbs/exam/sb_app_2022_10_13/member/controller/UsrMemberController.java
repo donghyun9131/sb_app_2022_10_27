@@ -3,6 +3,7 @@ package com.sbs.exam.sb_app_2022_10_13.member.controller;
 
 import com.sbs.exam.sb_app_2022_10_13.member.service.MemberService;
 import com.sbs.exam.sb_app_2022_10_13.member.vo.Member;
+import com.sbs.exam.sb_app_2022_10_13.util.Ut;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,27 +21,27 @@ public class UsrMemberController {
   public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
     int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 
-    if ( loginId == null || loginId.trim().length() == 0 ) {
+    if ( Ut.empty(loginId) ) {
       return "loginId(을)를 입력 해주세요.";
     }
 
-    if( loginPw == null  || loginPw.trim().length() == 0 ) {
+    if( Ut.empty(loginPw) ) {
       return "loginPw(을)를 입력 해주세요.";
     }
 
-    if( name == null || name.trim().length() == 0 ) {
+    if( Ut.empty(name) ) {
       return "name(을)를 입력 해주세요.";
     }
 
-    if( nickname == null || nickname.trim().length() == 0 ) {
+    if( Ut.empty(nickname) ) {
       return "nickname(을)를 입력 해주세요.";
     }
 
-    if( cellphoneNo == null || cellphoneNo.trim().length() == 0 ) {
+    if( Ut.empty(cellphoneNo) ) {
       return "cellphoneNo(을)를 입력 해주세요.";
     }
 
-    if( email == null || email.trim().length() == 0 ) {
+    if( Ut.empty(email) ) {
       return "email(을)를 입력 해주세요.";
     }
 
