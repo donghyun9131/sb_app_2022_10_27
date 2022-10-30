@@ -46,11 +46,11 @@ public class UsrMemberController {
     }
 
     if ( id == -1) {
-      return "해당 로그인아이디는 이미 사용중입니다.";
+      return Ut.f("해당 로그인아이디(%s)는 이미 사용중입니다.", loginId);
     }
 
     if ( id == -2 ) {
-      return "해당 이름과 이메일은 이미 사용중입니다.";
+      return Ut.f("해당 이름(%s)과 이메일(%s)은 이미 사용중입니다.", name, email);
     }
 
     Member member = memberService.getMemberById(id);
