@@ -1,7 +1,7 @@
-package com.sbs.exam.sb_app_2022_10_13.member.service;
+package com.sbs.exam.sb_app_2022_10_13.service;
 
-import com.sbs.exam.sb_app_2022_10_13.member.repository.MemberRepository;
-import com.sbs.exam.sb_app_2022_10_13.member.vo.Member;
+import com.sbs.exam.sb_app_2022_10_13.repository.MemberRepository;
+import com.sbs.exam.sb_app_2022_10_13.vo.Member;
 import org.springframework.stereotype.Service;
 
 @Service

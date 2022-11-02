@@ -1,6 +1,6 @@
-package com.sbs.exam.sb_app_2022_10_13.member.repository;
+package com.sbs.exam.sb_app_2022_10_13.repository;
 
-import com.sbs.exam.sb_app_2022_10_13.member.vo.Member;
+import com.sbs.exam.sb_app_2022_10_13.vo.Member;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
