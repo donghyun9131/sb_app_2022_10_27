@@ -77,8 +77,8 @@ SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'user2',
 loginPw = 'user2',
-`name` = 'user1',
-`nickname` = 'user1',
+`name` = 'user2',
+`nickname` = 'user2',
 cellphoneNo = '01011111111',
 email = 'gotkdqja@gmail.com';
 
