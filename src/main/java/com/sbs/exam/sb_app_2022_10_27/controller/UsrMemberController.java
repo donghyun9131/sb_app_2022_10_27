@@ -1,10 +1,10 @@
-package com.sbs.exam.sb_app_2022_10_13.controller;
+package com.sbs.exam.sb_app_2022_10_27.controller;
 
 
-import com.sbs.exam.sb_app_2022_10_13.service.MemberService;
-import com.sbs.exam.sb_app_2022_10_13.vo.Member;
-import com.sbs.exam.sb_app_2022_10_13.util.Ut;
-import com.sbs.exam.sb_app_2022_10_13.vo.ResultData;
+import com.sbs.exam.sb_app_2022_10_27.service.MemberService;
+import com.sbs.exam.sb_app_2022_10_27.vo.Member;
+import com.sbs.exam.sb_app_2022_10_27.util.Ut;
+import com.sbs.exam.sb_app_2022_10_27.vo.ResultData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

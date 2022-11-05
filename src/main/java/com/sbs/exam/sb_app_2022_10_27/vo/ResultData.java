@@ -1,4 +1,4 @@
-package com.sbs.exam.sb_app_2022_10_13.vo;
+package com.sbs.exam.sb_app_2022_10_27.vo;
 
 import lombok.Getter;
 

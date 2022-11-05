@@ -1,4 +1,4 @@
-package com.sbs.exam.sb_app_2022_10_13.util;
+package com.sbs.exam.sb_app_2022_10_27.util;
 
 public class Ut {
   public static boolean empty(Object obj) {

@@ -1,9 +1,9 @@
-package com.sbs.exam.sb_app_2022_10_13.service;
+package com.sbs.exam.sb_app_2022_10_27.service;
 
-import com.sbs.exam.sb_app_2022_10_13.repository.MemberRepository;
-import com.sbs.exam.sb_app_2022_10_13.util.Ut;
-import com.sbs.exam.sb_app_2022_10_13.vo.Member;
-import com.sbs.exam.sb_app_2022_10_13.vo.ResultData;
+import com.sbs.exam.sb_app_2022_10_27.repository.MemberRepository;
+import com.sbs.exam.sb_app_2022_10_27.util.Ut;
+import com.sbs.exam.sb_app_2022_10_27.vo.Member;
+import com.sbs.exam.sb_app_2022_10_27.vo.ResultData;
 import org.springframework.stereotype.Service;
 
 @Service
