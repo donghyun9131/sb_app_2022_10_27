@@ -31,7 +31,12 @@ public interface ArticleRepository {
   public void deleteArticle(@Param("id") int id);
 
   @Select("""
-          SELECT * FROM article ORDER BY id DESC
+          SELECT A.*,
+          M.nickname AS extra_writerName
+          FROM article AS A
+          LEFT JOIN member AS M
+          ON A.memberId = M.id
+          ORDER BY A.id DESC
           """)
   public List<Article> getArticles();
 

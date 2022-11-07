@@ -29,9 +29,9 @@
             <th>${article.id}</th>
             <th>${article.regDate.substring(2, 16)}</th>
             <th>${article.updateDate.substring(2, 16)}</th>
-            <th>${article.memberId}</th>
+            <th>${article.extra_writerName}</th>
             <th>
-              <a href="../article/detail?id=${article.id}" class="hover:underline">${article.title}</a>
+              <a class="hover:underline" href="../article/detail?id=${article.id}" >${article.title}</a>
             </th>
           </tr>
         </c:forEach>
