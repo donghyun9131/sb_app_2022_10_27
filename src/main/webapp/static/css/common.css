@@ -8,3 +8,19 @@
 html > body {
     font-family: 'GmarketSansMedium';
 }
+
+/* 라이브러리 */
+.con {
+    width : 1080px;
+    margin: 0 auto;
+}
+
+.table-box-type-1 > table {
+    width: 100%;
+}
+
+.table-box-type-1 > table th,
+.table-box-type-1 > table td {
+    border: 1px solid black;
+    padding: 10px;
+}

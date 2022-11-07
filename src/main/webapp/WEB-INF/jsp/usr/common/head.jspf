@@ -20,13 +20,30 @@
 <body>
 <h1>메인 페이지</h1>
 
-<header>
-  <a href="/">로고</a>
-  <ul>
-    <li><a href="/">홈</a></li>
-    <li><a href="/usr/article/list">리스트</a></li>
-    <li><a href="/usr/member/login">로그인</a></li>
-  </ul>
+<header class="h-[80px] bg-[#afafaf]">
+  <div class="con mx-auto h-full flex">
+    <a href="/" class="flex items-center px-3">
+      로고
+    </a>
+    <div class="flex-grow"></div>
+    <ul class="flex ">
+      <li>
+        <a href="/" class="flex h-full items-center px-3 hover:underline">
+          <span>홈</span>
+        </a>
+      </li>
+      <li>
+        <a href="/usr/article/list" class="flex h-full items-center px-3 hover:underline">
+          <span>리스트</span>
+        </a>
+      </li>
+      <li>
+        <a href="/usr/member/login" class="flex h-full items-center px-3 hover:underline">
+          <span>로그인</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </header>
 
 <main>
