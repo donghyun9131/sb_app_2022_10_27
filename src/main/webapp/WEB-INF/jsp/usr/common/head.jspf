@@ -5,7 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <title>${pageTitle}</title>
+  <!-- 제이쿼리 불러오기 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- 테일윈드 불러오기 -->
+  <!-- 노말라이즈, 라이브러리까지 한방에 해결 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 사이트 공통 css -->
   <link rel="stylesheet" href="/static/css/common.css">
+  <!-- 사이트 공통 js -->
   <script src="/static/js/common.js" defer></script>
 </head>
 <body>
