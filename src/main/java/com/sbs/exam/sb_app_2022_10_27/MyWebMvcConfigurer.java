@@ -1,5 +1,6 @@
-package com.sbs.exam.sb_app_2022_10_27.interceptor;
+package com.sbs.exam.sb_app_2022_10_27;
 
+import com.sbs.exam.sb_app_2022_10_27.interceptor.BeforeActionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,7 +16,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(beforeActionInterceptor)
-        .addPathPatterns("/**")
+        .addPathPatterns("/**")                                      // 모든 요청
         .excludePathPatterns("/css/**")
         .excludePathPatterns("/js/**")
         .excludePathPatterns("/error");
