@@ -35,7 +35,7 @@ public class Ut {
            """, msg);
   }
 
-  public static Object jsReplace(String msg, String uri) {
+  public static String jsReplace(String msg, String uri) {
     if (msg == null) {
       msg = "";
     }
