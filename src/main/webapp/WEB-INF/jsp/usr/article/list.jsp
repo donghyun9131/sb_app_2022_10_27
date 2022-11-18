@@ -29,7 +29,7 @@
             <th>${article.id}</th>
             <th>${article.regDate.substring(2, 16)}</th>
             <th>${article.updateDate.substring(2, 16)}</th>
-            <th>${article.extra_writerName}</th>
+            <th>${article.extra__writerName}</th>
             <th>
               <a class="btn-text-link" href="../article/detail?id=${article.id}" >${article.title}</a>
             </th>

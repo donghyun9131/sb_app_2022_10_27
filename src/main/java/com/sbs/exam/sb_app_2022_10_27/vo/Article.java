@@ -15,7 +15,7 @@ public class Article {
   private String title;
   private String body;
 
-  private String extra_writerName;
+  private String extra__writerName;
   private boolean extra__actorCanModify;
   private boolean extra__actorCanDelete;
 

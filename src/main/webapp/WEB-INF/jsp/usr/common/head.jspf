@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<header class="h-20 bg-gray-300">
+<header class="con-min-width h-20 bg-gray-300">
   <div class="con mx-auto h-full flex">
     <a href="/" class="flex items-center px-3">
       로고
