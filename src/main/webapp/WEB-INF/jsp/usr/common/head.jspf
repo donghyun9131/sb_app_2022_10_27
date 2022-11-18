@@ -1,15 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="ko">
+<html lang="ko" class="light" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>${pageTitle}</title>
+
   <!-- 제이쿼리 불러오기 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   <!-- 테일윈드 불러오기 -->
   <!-- 노말라이즈, 라이브러리까지 한방에 해결 -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+  <!-- 데이지 UI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.40.1/dist/full.css" rel="stylesheet" type="text/css" />
+
   <!-- 사이트 공통 css -->
   <link rel="stylesheet" href="/static/css/common.css">
   <!-- 사이트 공통 js -->
@@ -17,7 +23,7 @@
 </head>
 <body>
 
-<header class="h-[80px] bg-[#afafaf]">
+<header class="h-20 bg-gray-300">
   <div class="con mx-auto h-full flex">
     <a href="/" class="flex items-center px-3">
       로고
@@ -34,14 +40,14 @@
           <span>리스트</span>
         </a>
       </li>
-      <c:if test = "${!rq.isLogined()}">
-      <li>
-        <a href="/usr/member/login" class="flex h-full items-center px-3 hover:underline">
-          <span>로그인</span>
-        </a>
-      </li>
+      <c:if test="${!rq.isLogined()}">
+        <li>
+          <a href="/usr/member/login" class="flex h-full items-center px-3 hover:underline">
+            <span>로그인</span>
+          </a>
+        </li>
       </c:if>
-      <c:if test = "${rq.isLogined()}">
+      <c:if test="${rq.isLogined()}">
         <li>
           <a href="/usr/member/doLogout" class="flex h-full items-center px-3 hover:underline">
             <span>로그아웃</span>
