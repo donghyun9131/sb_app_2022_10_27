@@ -21,10 +21,16 @@ public class UsrArticleController {
   @Autowired
   private ArticleService articleService;
 
+  @RequestMapping("/usr/article/write")
 
-  @RequestMapping("/usr/article/doAdd")
+  public String showWrite(HttpServletRequest req) {
+    return "usr/article/write";
+  }
+
+
+  @RequestMapping("/usr/article/doWrite")
   @ResponseBody
-  public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
+  public ResultData<Article> doWrite(HttpServletRequest req, String title, String body) {
     Rq rq = (Rq) req.getAttribute("rq");
 
 

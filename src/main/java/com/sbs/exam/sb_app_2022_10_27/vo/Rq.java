@@ -1,5 +1,6 @@
 package com.sbs.exam.sb_app_2022_10_27.vo;
 
+import com.sbs.exam.sb_app_2022_10_27.service.MemberService;
 import com.sbs.exam.sb_app_2022_10_27.util.Ut;
 import lombok.Getter;
 
@@ -16,11 +17,14 @@ public class Rq {
   @Getter
   private int loginedMemberId;
 
+  @Getter
+  private Member loginedMember;
+
   private HttpServletRequest req;
   private HttpServletResponse resp;
   private HttpSession session;
 
-  public Rq(HttpServletRequest req, HttpServletResponse resp) {
+  public Rq(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
     this.req = req;
     this.resp = resp;
     this.session = req.getSession();
@@ -33,10 +37,12 @@ public class Rq {
     if (httpSession.getAttribute("loginedMemberId") != null) {
       isLogined = true;
       loginedMemberId = (int) session.getAttribute("loginedMemberId");
+      loginedMember = memberService.getMemberById(loginedMemberId);
     }
 
     this.isLogined = isLogined;
     this.loginedMemberId = loginedMemberId;
+    this.loginedMember = loginedMember;
   }
 
   public void printHistoryBackJs(String msg) {
