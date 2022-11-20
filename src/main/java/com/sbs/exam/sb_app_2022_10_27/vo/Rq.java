@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Component
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)           // request마다 Rq가 생성.
 public class Rq {
 
   @Getter
