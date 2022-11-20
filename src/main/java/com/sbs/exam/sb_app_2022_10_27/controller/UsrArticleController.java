@@ -7,15 +7,12 @@ import com.sbs.exam.sb_app_2022_10_27.vo.Article;
 import com.sbs.exam.sb_app_2022_10_27.vo.Board;
 import com.sbs.exam.sb_app_2022_10_27.vo.ResultData;
 import com.sbs.exam.sb_app_2022_10_27.vo.Rq;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -23,12 +20,13 @@ public class UsrArticleController {
 
   private ArticleService articleService;
   private BoardService boardService;
+  private Rq rq;
 
-  public UsrArticleController(ArticleService articleService, BoardService boardService) {
+  public UsrArticleController(ArticleService articleService, BoardService boardService, Rq rq) {
     this.articleService = articleService;
     this.boardService = boardService;
+    this.rq = rq;
   }
-
 
 
   @RequestMapping("/usr/article/write")
@@ -39,9 +37,7 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/doWrite")
   @ResponseBody
-  public String doWrite(HttpServletRequest req, String title, String body, String replaceUri) {
-    Rq rq = (Rq) req.getAttribute("rq");
-
+  public String doWrite(String title, String body, String replaceUri) {
 
     if( Ut.empty(title)) {
       return rq.jsHistoryBack("title(을)를 입력해주세요.");
@@ -64,9 +60,7 @@ public class UsrArticleController {
   }
 
   @RequestMapping("/usr/article/list")
-  public String showList(HttpServletRequest req, Model model, int boardId) {
-    Rq rq = (Rq) req.getAttribute("rq");
-
+  public String showList(Model model, int boardId) {
     Board board = boardService.getBoardById(boardId);
 
     if (board == null) {
@@ -85,9 +79,7 @@ public class UsrArticleController {
   }
 
   @RequestMapping("/usr/article/detail")
-  public String showDetail(HttpServletRequest req, Model model, int id) {
-    Rq rq = (Rq) req.getAttribute("rq");
-
+  public String showDetail(Model model, int id) {
     Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
     model.addAttribute("article", article);
@@ -97,8 +89,7 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/doDelete")
   @ResponseBody
-  public Object doDelete(HttpServletRequest req, int id) {
-    Rq rq = (Rq) req.getAttribute("rq");                             // BeforeActionInterceptor 에서 Rq 받아오기
+  public Object doDelete(int id) {
 
     if ( rq.isLogined() == false ) {
       return rq.jsHistoryBack("로그인 후 이용해주세요.");
@@ -120,9 +111,7 @@ public class UsrArticleController {
   }
 
   @RequestMapping("/usr/article/modify")
-  public String showModify(HttpServletRequest req, Model model, int id) {
-    Rq rq = (Rq) req.getAttribute("rq");
-
+  public String showModify(Model model, int id) {
     Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
     if ( article == null ) {
@@ -140,12 +129,9 @@ public class UsrArticleController {
     return "usr/article/modify";
   }
 
-
   @RequestMapping("/usr/article/doModify")
   @ResponseBody
-  public String doModify(HttpServletRequest req, int id, String title, String body) {
-    Rq rq = (Rq) req.getAttribute("rq");
-
+  public String doModify(int id, String title, String body) {
     if ( rq.isLogined() == false ) {
       return rq.jsHistoryBack("로그인 후 이용해주세요.");
     }
