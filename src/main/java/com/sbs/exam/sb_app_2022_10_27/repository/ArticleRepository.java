@@ -78,9 +78,12 @@ public interface ArticleRepository {
             AND A.boardId = #{boardId}
           </if>
           ORDER BY A.id DESC
+          <if test="limitTake != -1">
+            LIMIT #{limitStart}, #{limitTake}
+          </if>
           </script>
           """)
-  public List<Article> getArticles(@Param("boardId") int boardId);
+  public List<Article> getArticles(@Param("boardId") int boardId, @Param("limitStart") int limitStart, @Param("limitTake") int limitTake);
 
 
   @Select("""
