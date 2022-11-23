@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html lang="ko" class="light" data-theme="light">
 <head>
@@ -42,7 +43,7 @@
       </li>
       <li>
         <a href="/usr/article/list?boardId=1" class="flex h-full items-center px-3 hover:underline">
-          <span>공지사항</span>
+          <span>공지사항 게시판</span>
         </a>
       </li>
       <li>
@@ -70,7 +71,7 @@
 
 <section class="mt-5 con-min-width">
   <div class="con mx-auto px-3">
-    <h1>${pageTitle}</h1>
+    <h1>${pageTitle} 페이지</h1>
   </div>
 </section>
 
