@@ -18,18 +18,20 @@ public class ArticleService {
   }
 
 
-  public ResultData writeArticle(int memberId, int boardId, String title, String body) {
+  public ResultData<Integer> writeArticle(int memberId, int boardId, String title, String body) {
     articleRepository.writeArticle(memberId, boardId, title, body);
     int id = articleRepository.getLastInsertId();
 
     return ResultData.from("S-1", Ut.f("%d번 게시물이 생성되었습니다.", id), "id", id);
   }
 
-  public List<Article> getForPrintArticles(int actorId, int boardId, String searchKeywordTypeCode, String searchKeyword, int itemsCountInAPage, int page) {
+  public List<Article> getForPrintArticles(int actorId, int boardId, String searchKeywordTypeCode,
+                                           String searchKeyword, int itemsCountInAPage, int page) {
     int limitStart = (page - 1) * itemsCountInAPage;
     int limitTake = itemsCountInAPage;
 
-    List<Article> articles = articleRepository.getArticles(boardId, searchKeywordTypeCode, searchKeyword, limitStart, limitTake);
+    List<Article> articles = articleRepository.getArticles(boardId, searchKeywordTypeCode, searchKeyword,
+        limitStart, limitTake);
 
     for (Article article : articles) {
       updateForPrintData(actorId, article);
@@ -70,7 +72,7 @@ public class ArticleService {
 
   public ResultData actorCanModify (int actorId, Article article) {
     if ( article == null ) {
-      return ResultData.from("F-1", "권한이 없습니다.");
+      return ResultData.from("F-1", "게시물이 존재하지 않습니다.");
     }
 
     if ( article.getMemberId() != actorId ) {
@@ -82,7 +84,7 @@ public class ArticleService {
 
   public ResultData actorCanDelete (int actorId, Article article) {
     if ( article == null ) {
-      return ResultData.from("F-1", "권한이 없습니다.");
+      return ResultData.from("F-1", "게시물이 존재하지 않습니다.");
     }
 
     if ( article.getMemberId() != actorId ) {
@@ -96,16 +98,14 @@ public class ArticleService {
     return articleRepository.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
   }
 
-  public ResultData increaseHitCount(int id) {
+  public ResultData<Integer> increaseHitCount(int id) {
     int affectedRowsCount = articleRepository.increaseHitCount(id);
 
     if(affectedRowsCount == 0) {
-      return ResultData.from("F-1", "해당 게시물이 존재하지 않습니다.",
-          "affectedRowsCount", affectedRowsCount);
+      return ResultData.from("F-1", "해당 게시물이 존재하지 않습니다.", "affectedRowsCount", affectedRowsCount);
     }
 
-    return ResultData.from("S-1", "조회수가 증가되었습니다.",
-        "affectedRowsCount", affectedRowsCount);
+    return ResultData.from("S-1", "조회수가 증가되었습니다.", "affectedRowsCount", affectedRowsCount);
   }
 
   public int getArticleHitCount(int id) {
