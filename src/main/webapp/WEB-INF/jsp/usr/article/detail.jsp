@@ -16,7 +16,7 @@
     if( localStorage.getItem(localStorageKey) ) {
       return;
     }
-    
+
     localStorage.setItem(localStorageKey, true);
 
     $.get('/usr/article/doIncreaseHitCountRd',
