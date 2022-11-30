@@ -9,7 +9,7 @@ Spring Boot + Mybatis 를 이용하여 웹 페이지를 구현했습니다.
 
 ![게시판1](https://user-images.githubusercontent.com/105425369/204768950-3d87cf2e-a3e1-4d57-ad7c-14ef8ecea820.PNG)
 
-![게시판2](https://user-images.githubusercontent.com/105425369/204771623-0722c2b5-14f2-4cb7-b8a5-12863ddceb70.PNG)
+![게시판2](https://user-images.githubusercontent.com/105425369/204775765-4bbe3e35-31cd-4aaf-aa9a-62daf78ce044.PNG)
 
 
 
