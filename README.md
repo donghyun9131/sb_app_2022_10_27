@@ -5,5 +5,6 @@
 ## 개발 환경
 
 - Spring Boot 2.7.6
+- Gradle 7.5
 - IntelliJ IDEA
 - JAVA 17
