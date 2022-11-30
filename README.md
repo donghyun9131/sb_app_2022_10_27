@@ -7,6 +7,8 @@ Spring Boot + Mybatis 를 이용하여 웹 페이지를 구현했습니다.
 현재는 간단한 CRUD 컨트롤러와, 이를 요청 / 응답 받는 VIEW 페이지가 구현되어 있습니다.
 
 
+
+
 - 프로젝트 구동
 
 ![게시판1](https://user-images.githubusercontent.com/105425369/204768950-3d87cf2e-a3e1-4d57-ad7c-14ef8ecea820.PNG)
