@@ -10,13 +10,11 @@ import java.util.List;
 
 @Service
 public class ArticleService {
-
   private ArticleRepository articleRepository;
 
-  public ArticleService(ArticleRepository articleRepository) {           // 생성자 주입
+  public ArticleService(ArticleRepository articleRepository) {
     this.articleRepository = articleRepository;
   }
-
 
   public ResultData<Integer> writeArticle(int memberId, int boardId, String title, String body) {
     articleRepository.writeArticle(memberId, boardId, title, body);
@@ -30,25 +28,14 @@ public class ArticleService {
     int limitStart = (page - 1) * itemsCountInAPage;
     int limitTake = itemsCountInAPage;
 
-    List<Article> articles = articleRepository.getArticles(boardId, searchKeywordTypeCode, searchKeyword,
+    List<Article> articles = articleRepository.getFroPrintArticles(boardId, searchKeywordTypeCode, searchKeyword,
         limitStart, limitTake);
 
     for (Article article : articles) {
       updateForPrintData(actorId, article);
     }
+
     return articles;
-  }
-
-  private void updateForPrintData(int actorId, Article article) {
-    if( article == null ) {
-      return;
-    }
-
-    ResultData actorCanDeleteRd = actorCanDelete(actorId, article);
-    article.setExtra__actorCanDelete(actorCanDeleteRd.isSuccess());
-
-    ResultData actorCanModifyRd = actorCanModify(actorId, article);
-    article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
   }
 
   public Article getForPrintArticle(int actorId, int id) {
@@ -59,6 +46,18 @@ public class ArticleService {
     return article;
   }
 
+  private void updateForPrintData(int actorId, Article article) {
+    if (article == null) {
+      return;
+    }
+
+    ResultData actorCanDeleteRd = actorCanDelete(actorId, article);
+    article.setExtra__actorCanDelete(actorCanDeleteRd.isSuccess());
+
+    ResultData actorCanModifyRd = actorCanModify(actorId, article);
+    article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
+  }
+
   public void deleteArticle(int id) {
     articleRepository.deleteArticle(id);
   }
@@ -67,31 +66,32 @@ public class ArticleService {
     articleRepository.modifyArticle(id, title, body);
 
     Article article = getForPrintArticle(0, id);
-    return ResultData.from("S-1", Ut.f("%d번 게시물을 수정했습니다.", id), "article", article);
+
+    return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다.", id), "article", article);
   }
 
-  public ResultData actorCanModify (int actorId, Article article) {
-    if ( article == null ) {
+  public ResultData actorCanModify(int actorId, Article article) {
+    if (article == null) {
       return ResultData.from("F-1", "게시물이 존재하지 않습니다.");
     }
 
-    if ( article.getMemberId() != actorId ) {
+    if (article.getMemberId() != actorId) {
       return ResultData.from("F-2", "권한이 없습니다.");
     }
 
-    return ResultData.from("S-1", "수정 가능.");
+    return ResultData.from("S-1", "게시물 수정이 가능합니다.");
   }
 
-  public ResultData actorCanDelete (int actorId, Article article) {
-    if ( article == null ) {
+  public ResultData actorCanDelete(int actorId, Article article) {
+    if (article == null) {
       return ResultData.from("F-1", "게시물이 존재하지 않습니다.");
     }
 
-    if ( article.getMemberId() != actorId ) {
+    if (article.getMemberId() != actorId) {
       return ResultData.from("F-2", "권한이 없습니다.");
     }
 
-    return ResultData.from("S-1", "삭제 가능.");
+    return ResultData.from("S-1", "게시물 삭제가 가능합니다.");
   }
 
   public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
@@ -101,7 +101,7 @@ public class ArticleService {
   public ResultData<Integer> increaseHitCount(int id) {
     int affectedRowsCount = articleRepository.increaseHitCount(id);
 
-    if(affectedRowsCount == 0) {
+    if (affectedRowsCount == 0) {
       return ResultData.from("F-1", "해당 게시물이 존재하지 않습니다.", "affectedRowsCount", affectedRowsCount);
     }
 
