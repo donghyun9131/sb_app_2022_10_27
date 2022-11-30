@@ -46,15 +46,14 @@
         <tbody>
         <c:forEach var="article" items="${articles}">
           <tr>
-            <th>${article.id}</th>
-            <th>${article.regDate.substring(2, 16)}</th>
-            <th>${article.updateDate.substring(2, 16)}</th>
-            <th>${article.extra__writerName}</th>
-            <th>
+            <td>${article.forPrintType1RegDate}</td>
+            <td>${article.forPrintType1UpdateDate}</td>
+            <td>${article.extra__writerName}</td>
+            <td>
               <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}" >
                 ${article.title}
               </a>
-            </th>
+            </td>
           </tr>
         </c:forEach>
         </tbody>

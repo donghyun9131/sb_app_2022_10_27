@@ -53,11 +53,11 @@
         </tr>
         <tr>
           <th>작성날짜</th>
-          <td>${article.regDate}</td>
+          <td>${article.forPrintType2RegDate}</td>
         </tr>
         <tr>
           <th>수정날짜</th>
-          <td>${article.updateDate}</td>
+          <td>${article.forPrintType2UpdateDate}</td>
         </tr>
         <tr>
           <th>작성자</th>
