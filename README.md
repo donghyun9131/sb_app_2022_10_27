@@ -10,6 +10,7 @@
 ## 개발 환경
 
 - Spring Boot 2.7.6
+- Database : Mysql
 - Gradle 7.5
-- IntelliJ IDEA
+- IDE : IntelliJ IDEA
 - JAVA 17
