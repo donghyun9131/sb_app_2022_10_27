@@ -23,43 +23,48 @@ public class UsrMemberController {
     this.rq = rq;
   }
 
+  @RequestMapping("/usr/member/join")
+  public String showJoin() {
+    return "usr/member/join";
+  }
+
   @RequestMapping("usr/member/doJoin")
   @ResponseBody
-  public ResultData<Member> doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
+  public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
 
     if ( Ut.empty(loginId) ) {
-      return ResultData.from("F-1", "loginId(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("loginId(을)를 입력 해주세요.");
     }
 
     if( Ut.empty(loginPw) ) {
-      return ResultData.from("F-2", "loginPw(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("loginPw(을)를 입력 해주세요.");
     }
 
     if( Ut.empty(name) ) {
-      return ResultData.from("F-3", "name(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("name(을)를 입력 해주세요.");
     }
 
     if( Ut.empty(nickname) ) {
-      return ResultData.from("F-4", "nickname(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("nickname(을)를 입력 해주세요.");
     }
 
     if( Ut.empty(cellphoneNo) ) {
-      return ResultData.from("F-5", "cellphoneNo(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("cellphoneNo(을)를 입력 해주세요.");
     }
 
     if( Ut.empty(email) ) {
-      return ResultData.from("F-6", "email(을)를 입력 해주세요.");
+      return rq.jsHistoryBack("email(을)를 입력 해주세요.");
     }
 
     ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
-    // resultCode
+    // 회원가입 실패 확인
 
     if ( joinRd.isFail() ) {
-      return (ResultData) joinRd;
+      return rq.jsHistoryBack(Ut.f("%s", joinRd.getMsg()));
     }
 
     Member member = memberService.getMemberById(joinRd.getData1());
-    return ResultData.newData(joinRd, "member", member);
+    return rq.jsReplace(Ut.f("%s", joinRd.getMsg()), "/usr/member/login");
   }
 
   @RequestMapping("/usr/member/login")

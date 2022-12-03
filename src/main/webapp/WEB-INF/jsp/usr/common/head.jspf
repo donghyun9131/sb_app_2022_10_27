@@ -58,6 +58,13 @@
           </a>
         </li>
       </c:if>
+      <c:if test="${!rq.isLogined()}">
+        <li>
+          <a href="/usr/member/join" class="flex h-full items-center px-3 hover:underline">
+            <span>회원가입</span>
+          </a>
+        </li>
+      </c:if>
       <c:if test="${rq.isLogined()}">
         <li>
           <a href="/usr/member/doLogout" class="flex h-full items-center px-3 hover:underline">
