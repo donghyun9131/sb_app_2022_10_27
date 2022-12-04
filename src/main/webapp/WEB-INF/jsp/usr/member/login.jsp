@@ -34,7 +34,6 @@
         </tbody>
       </table>
       <a class="btn btn-link" href="../member/findLoginId">아이디 찾기</a>
-      <a class="btn btn-link" href="../member/findLoginPw">비밀번호 찾기</a>
       <a class="btn btn-link" href="/usr/member/join">회원가입</a>
     </form>
   </div>

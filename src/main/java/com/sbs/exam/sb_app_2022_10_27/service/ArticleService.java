@@ -18,6 +18,8 @@ public class ArticleService {
 
   public ResultData<Integer> writeArticle(int memberId, int boardId, String title, String body) {
     articleRepository.writeArticle(memberId, boardId, title, body);
+
+    // 방금 생성한 게시글의 번호를 가져옴.
     int id = articleRepository.getLastInsertId();
 
     return ResultData.from("S-1", Ut.f("%d번 게시물이 생성되었습니다.", id), "id", id);
@@ -70,6 +72,7 @@ public class ArticleService {
     return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다.", id), "article", article);
   }
 
+  // 수정 가능 권한체크
   public ResultData actorCanModify(int actorId, Article article) {
     if (article == null) {
       return ResultData.from("F-1", "게시물이 존재하지 않습니다.");
@@ -81,7 +84,7 @@ public class ArticleService {
 
     return ResultData.from("S-1", "게시물 수정이 가능합니다.");
   }
-
+  // 삭제 가능 권한체크
   public ResultData actorCanDelete(int actorId, Article article) {
     if (article == null) {
       return ResultData.from("F-1", "게시물이 존재하지 않습니다.");

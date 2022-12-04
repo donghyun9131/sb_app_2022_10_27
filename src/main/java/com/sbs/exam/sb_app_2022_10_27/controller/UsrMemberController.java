@@ -107,6 +107,32 @@ public class UsrMemberController {
     return rq.jsReplace(Ut.f("%s님 환영합니다.", member.getNickname()), "/");
   }
 
+  @RequestMapping("/usr/member/findLoginId")
+  public String showFindLoginId() {
+    return "usr/member/findLoginId";
+  }
+
+  @RequestMapping("/usr/member/doFindLoginId")
+  @ResponseBody
+  public String doFindLoginId(String name, String email) {
+    if (Ut.empty(name)) {
+      return rq.jsHistoryBack("이름을(를) 입력해주세요.");
+    }
+
+    if (Ut.empty(email)) {
+      return rq.jsHistoryBack("이메일을(를) 입력해주세요.");
+    }
+
+    // 이름과 이메일로 DB에서 회원검색
+    Member member = memberService.getMemberByNameAndEmail(name, email);
+
+    if (member == null) {
+      return rq.jsHistoryBack("일치하는 회원이 존재하지 않습니다.");
+    }
+
+    return rq.jsReplace(Ut.f("회원님의 아이디는 `%s` 입니다.", member.getLoginId()), "/usr/member/login");
+  }
+
   @RequestMapping("/usr/member/doLogout")
   @ResponseBody
   public String doLogout() {

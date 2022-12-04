@@ -14,6 +14,7 @@ public class ReactionPointService {
     this.articleService = articleService;
   }
 
+  // 자격 확인
   public ResultData actorCanMakeReactionPoint(int actorId, String relTypeCode, int relId) {
     if (actorId == 0) {
       return ResultData.from("F-1", "로그인 후 이용해주세요.");
@@ -37,31 +38,35 @@ public class ReactionPointService {
         break;
     }
 
-    return ResultData.from("S-1", "좋아요 처리 되었습니다.");
+    return ResultData.from("S-1", "좋아요를 누르셨습니다.");
   }
 
   public ResultData addBadReactionPoint(int actorId, String relTypeCode, int relId) {
+    // 현재 사용자가 어느 게시판에 몇번째 글에 좋아요 취소를 했는 지 저장.
     reactionPointRepository.addBadReactionPoint(actorId, relTypeCode, relId);
 
+    // 해당 게시글에 리액션 포인트 감소
     switch (relTypeCode) {
       case "article":
         articleService.increaseBadReactionPoint(relId);
         break;
     }
 
-    return ResultData.from("S-1", "싫어요 처리 되었습니다.");
+    return ResultData.from("S-1", "싫어요를 누르셨습니다.");
   }
 
   public ResultData deleteGoodReactionPoint(int actorId, String relTypeCode, int relId) {
+    // 현재 사용자가 어느 게시판에 몇번째 글에 좋아요 취소를 했는지 저장
     reactionPointRepository.deleteReactionPoint(actorId, relTypeCode, relId);
 
+    // 해당 게시글에 리액션 포인트 감소
     switch (relTypeCode) {
       case "article":
         articleService.decreaseGoodReactionPoint(relId);
         break;
     }
 
-    return ResultData.from("S-1", "좋아요 수가 감소 되었습니다.");
+    return ResultData.from("S-1", "좋아요가 취소 처리 됬습니다.");
   }
 
   public ResultData deleteBadReactionPoint(int actorId, String relTypeCode, int relId) {
@@ -73,6 +78,6 @@ public class ReactionPointService {
         break;
     }
 
-    return ResultData.from("S-1", "싫어요 수가 감소 되었습니다.");
+    return ResultData.from("S-1", "싫어요가 취소 처리 됬습니다.");
   }
 }
