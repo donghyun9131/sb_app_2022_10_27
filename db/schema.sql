@@ -273,7 +273,6 @@ relTypeCode = 'article',
 relId = 1,
 `body` = '댓글 3';
 
-
 INSERT INTO reply
 SET regDate = NOW(),
 updateDate = NOW(),
@@ -281,3 +280,14 @@ memberId = 3,
 relTypeCode = 'article',
 relId = 2,
 `body` = '댓글 4';
+
+# 댓글 테이블에 goodReactionPoint 칼럼을 추가
+ALTER TABLE reply
+ADD COLUMN goodReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# 댓글 테이블에 badReactionPoint 칼럼을 추가
+ALTER TABLE reply
+ADD COLUMN badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# 댓글 테이블에 인덱스 걸기
+ALTER TABLE `reply` ADD INDEX(`relTypeCode`, `relId`);
