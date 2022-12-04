@@ -1,5 +1,7 @@
 package com.sbs.exam.sb_app_2022_10_27.util;
 
+import java.net.URLEncoder;
+
 public class Ut {
   public static boolean empty(Object obj) {
     if(obj == null) {
@@ -55,4 +57,11 @@ public class Ut {
            """, msg, uri);
   }
 
+  public static String getUriEncoded(String str) {
+    try {
+      return URLEncoder.encode(str, "UTF-8");
+    } catch (Exception e) {
+      return str;
+    }
+  }
 }

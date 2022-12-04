@@ -154,14 +154,21 @@ public interface ArticleRepository {
           """)
   public int getArticleHitCount(@Param("id") int id);
 
-  @Select("""
+  @Update("""
           <script>
-          SELECT IFNULL(SUM(RP.point), 0) AS s
-          FROM reactionPoint AS RP
-          WHERE RP.relTypeCode = 'article'
-          AND RP.relId = #{id}
-          AND RP.memberId = #{memberId}
+          UPDATE article
+          SET goodReactionPoint = goodReactionPoint + 1
+          WHERE id = #{id}
           </script>
           """)
-  public int getSumReactionPointByMemberId(@Param("memberId") int actorId, @Param("id") int id);
+  public int increaseGoodReactionPoint(@Param("id") int id);
+
+  @Update("""
+          <script>
+          UPDATE article
+          SET badReactionPoint = badReactionPoint + 1
+          WHERE id = #{id}
+          </script>
+          """)
+  public int increaseBadReactionPoint(@Param("id") int id);
 }

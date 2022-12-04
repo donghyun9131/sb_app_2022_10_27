@@ -96,4 +96,19 @@ public class Rq {
   public void initOnBeforeActionInterceptor() {
 
   }
+
+  public String getCurrentUri() {
+    String currentUri = (String)req.getAttribute("javax.servlet.forward.request_uri");
+    String queryString = req.getQueryString();
+
+    if (queryString != null && queryString.length() > 0) {
+      currentUri += "?" + queryString;
+    }
+
+    return currentUri;
+  }
+
+  public String getEncodedCurrentUri() {
+    return Ut.getUriEncoded(getCurrentUri());
+  }
 }

@@ -76,13 +76,13 @@
               <span class="badge badge-primary">${article.goodReactionPoint}</span>
               &nbsp;
               <c:if test="${actorCanMakeReactionPoint}">
-                <button class="btn btn-xs btn-primary">
+                <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id}&replaceUri=${rq.encodedCurrentUri}" class="btn btn-xs btn-primary">
                   좋아요 😍
-                </button>
+                </a>
                 &nbsp;
-                <button class="btn btn-xs btn-secondary">
+                <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id}&replaceUri=${rq.encodedCurrentUri}" class="btn btn-xs btn-secondary">
                   싫어요 🤮
-                </button>
+                </a>
               </c:if>
             </div>
           </td>
