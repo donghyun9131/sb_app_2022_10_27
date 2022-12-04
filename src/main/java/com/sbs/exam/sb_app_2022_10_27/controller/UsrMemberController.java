@@ -57,13 +57,15 @@ public class UsrMemberController {
     }
 
     ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
-    // 회원가입 실패 확인
 
+    // 회원가입 실패 확인
     if ( joinRd.isFail() ) {
       return rq.jsHistoryBack(Ut.f("%s", joinRd.getMsg()));
     }
 
     Member member = memberService.getMemberById(joinRd.getData1());
+
+    // 로그인 페이지로 이동
     return rq.jsReplace(Ut.f("%s", joinRd.getMsg()), "/usr/member/login");
   }
 
@@ -86,17 +88,20 @@ public class UsrMemberController {
     if( Ut.empty(loginPw) ) {
       return rq.jsHistoryBack("loginPw(을)를 입력 해주세요.");
     }
-
+    // DB에서 입력된 loginID와 같은 회원정보를 가져온다.
     Member member = memberService.getMemberByLoginId(loginId);
 
+    // 해당 회원 정보가 없으면 로그인창으로 메세지와 함께 이동.
     if ( member == null ) {
       return rq.jsHistoryBack("존재하지 않는 로그인아이디 입니다.");
     }
 
+    // 멤버변수에서 비밀번호를 얻어와 입력된 비밀번호와 같은지 확인.
     if(member.getLoginPw().equals(loginPw) == false) {
       return rq.jsHistoryBack("비밀번호가 일치하지 않습니다.");
     }
 
+    // rq에 로그인한 멤버에 해당하는 값을 set
     rq.login(member);
 
     return rq.jsReplace(Ut.f("%s님 환영합니다.", member.getNickname()), "/");

@@ -53,12 +53,23 @@
           <th>이메일</th>
           <td>
             <input name="email" class="input input-bordered w-96 max-w-xs" type="text" placeholder="이메일을 입력해주세요." />
-            <button type="submit" class="btn btn-primary">가입<button>
-            <button type="button" onclick="history.back();" class="btn btn-outline btn-secondary">홈</button>
           </td>
         </tr>
         </tbody>
       </table>
+      <div class="mt-4 btn-wrap gap-1">
+        <button type="submit" href="#" class="btn btn-primary btn-sm mb-1">
+          <span><i class="fas fa-user-plus"></i></span>
+          &nbsp;
+          <span>가입</span>
+        </button>
+
+        <a href="/usr/home/main" class="btn btn-sm mb-1">
+          <span><i class="fas fa-home"></i></span>
+          &nbsp;
+          <span>홈</span>
+        </a>
+      </div>
     </form>
   </div>
 </section>
