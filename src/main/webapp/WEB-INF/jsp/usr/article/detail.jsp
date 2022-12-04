@@ -131,7 +131,45 @@
            href="../article/doDelete?id=${article.id}">게시물 삭제</a>
       </c:if>
     </div>
+  </div>
+</section>
 
+<section class="mt-5 con-min-width">
+  <div class="con mx-auto px-3">
+    <h1>댓글 작성</h1>
+
+    <c:if test="${rq.logined}">
+      <form class="table-box-type-1" method="POST" action="../reply/doWrite">
+        <input type="hidden" name="relTypeCode" value="article">
+        <input type="hidden" name="relId" value="${article.id}">
+
+        <table border="1">
+          <colgroup>
+            <col width="200"/>
+          </colgroup>
+          <tbody>
+          <tr>
+            <th>작성자</th>
+            <td>
+              ${rq.loginedMember.nickname}
+            </td>
+          </tr>
+          <tr>
+            <th>내용</th>
+            <td>
+              <textarea required="required" class="textarea textarea-bordered w-full" name="body" rows="5" placeholder="댓글 내용"></textarea>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="flex justify-end my-3">
+          <button type="submit" class="btn btn-primary">댓글작성</button>
+        </div>
+      </form>
+    </c:if>
+    <c:if test="${rq.notLogined}">
+      <a class="link link-primary" href="/usr/member/login">로그인</a> 후 이용해주세요.
+    </c:if>
   </div>
 </section>
 

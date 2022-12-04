@@ -27,16 +27,6 @@
             <option value="1">공지</option>
             <option value="2">자유</option>
           </select>
-          <!--
-          <label>
-            공지
-            <input type="radio" name="boardId" value="1">
-          </label>
-          <label>
-            자유
-            <input type="radio" name="boardId" value="2">
-          </label>
-          -->
         </td>
         </tr>
         <tr>
@@ -61,10 +51,6 @@
         </tbody>
       </table>
     </form>
-
-    <div class="btns">
-    </div>
-
   </div>
 </section>
 

@@ -4,8 +4,8 @@
 <c:set var="pageTitle" value="로그인" />
 <%@ include file="../common/head.jspf"%>
 
-<section class="mt-5">
-  <div class="container mx-auto px-3">
+<section class="mt-5 con-min-width">
+  <div class="con mx-auto px-3">
     <form class="table-box-type-1" method="POST" action="../member/doLogin">
       <table>
         <colgroup>
